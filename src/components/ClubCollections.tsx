@@ -1,9 +1,10 @@
 import { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ClubCollections = () => {
+    const navigate = useNavigate();
     const scrollRef = useRef<HTMLDivElement>(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
@@ -49,9 +50,12 @@ const ClubCollections = () => {
                             <span className="text-black font-bold">COLLECTIONS</span>
                         </h2>
                     </div>
-                    <Link to="/gallery" className="hidden md:block px-6 py-1.5 border border-blue-600 text-blue-600 rounded-full text-sm font-semibold hover:bg-blue-50 transition-colors">
+                    <button
+                        onClick={() => navigate('/gallery')}
+                        className="hidden md:block px-6 py-1.5 border border-blue-600 text-blue-600 rounded-full text-sm font-semibold hover:bg-blue-50 transition-colors"
+                    >
                         View All
-                    </Link>
+                    </button>
                 </div>
 
                 {/* Carousel Container */}

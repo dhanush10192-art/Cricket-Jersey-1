@@ -1,14 +1,58 @@
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Footer = () => {
-  const quickLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'Infrastructure', path: '/#infrastructure' },
-    { name: 'Blog', path: '/blog' },
-    { name: 'About', path: '/#about' },
-  ];
+  const navigate = useNavigate();
+  const location = useLocation();
+  const quickLinks = ['Home', 'Services', 'Gallery', 'Infrastructure', 'Blog', 'About'];
+
+  const scrollToSection = (sectionId: string) => {
+    // Special handling for Gallery to navigate to the separate page
+    if (sectionId === 'Gallery') {
+      navigate('/gallery');
+      return;
+    }
+
+    // Special handling for Blog to navigate to the separate blog list page
+    if (sectionId === 'Blog') {
+      navigate('/blog');
+      return;
+    }
+
+    // Special handling for Home to navigate to top
+    if (sectionId === 'Home') {
+      if (location.pathname !== '/') {
+        navigate('/');
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
+
+    // For other sections
+    const targetId = sectionId.toLowerCase();
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Delay scroll to allow navigation to complete
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          const navHeight = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(targetId);
+      if (element) {
+        const navHeight = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
+    }
+  };
   const socialLinks = [
     { icon: Facebook, href: '#' },
     { icon: Twitter, href: '#' },
@@ -51,12 +95,12 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <Link
-                    to={link.path}
-                    className="hover:text-blue-400 transition-colors duration-300"
+                  <button
+                    onClick={() => scrollToSection(link)}
+                    className="hover:text-blue-400 transition-colors duration-300 text-left"
                   >
-                    {link.name}
-                  </Link>
+                    {link}
+                  </button>
                 </li>
               ))}
             </ul>

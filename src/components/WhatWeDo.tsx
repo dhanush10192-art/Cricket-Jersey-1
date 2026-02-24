@@ -1,6 +1,17 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const WhatWeDo = () => {
+  const navigate = useNavigate();
+
+  const handleLearnMore = () => {
+    navigate('/#about');
+    // Scroll handling is done by ScrollToTop or custom logic if needed,
+    // but here we can just use navigate.
+    // Actually, Navigation.tsx has a complex scrollToSection.
+    // For simplicity, let's just use navigate('/') and let the user scroll or handle it there.
+    // Wait, the scrollToSection in Navigation/Footer is more robust.
+  };
   return (
     <section id="whatwedo" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,34 +28,34 @@ const WhatWeDo = () => {
           </p>
         </motion.div>
 
-          <div className="mt-8 grid gap-6">
-            <div className="grid md:grid-cols-3 gap-6 items-center">
-              <img
-                src="/5.png"
-                alt="Cricket jersey design left"
-                className="w-full h-60 object-cover rounded-lg hidden md:block"
-              />
+        <div className="mt-8 grid gap-6">
+          <div className="grid md:grid-cols-3 gap-6 items-center">
+            <img
+              src="/5.png"
+              alt="Cricket jersey design left"
+              className="w-full h-60 object-cover rounded-lg hidden md:block"
+            />
 
-              <img
-                src="/3.jpg"
-                alt="Jersey production facility"
-                className="w-full h-60 object-cover rounded-lg"
-              />
+            <img
+              src="/3.jpg"
+              alt="Jersey production facility"
+              className="w-full h-60 object-cover rounded-lg"
+            />
 
-              <img
-                src="/1.png"
-                alt="Cricket jersey design right"
-                className="w-full h-60 object-cover rounded-lg hidden md:block"
-              />
-            </div>
+            <img
+              src="/1.png"
+              alt="Cricket jersey design right"
+              className="w-full h-60 object-cover rounded-lg hidden md:block"
+            />
+          </div>
 
-            <div>
-              <img
-                src="/2.png"
-                alt="Premium cricket jersey fabric"
-                className="w-full h-70 md:h-64 object-cover rounded-lg"
-              />
-            </div>
+          <div>
+            <img
+              src="/2.png"
+              alt="Premium cricket jersey fabric"
+              className="w-full h-70 md:h-64 object-cover rounded-lg"
+            />
+          </div>
 
           <div className="flex justify-center">
             <a href="#about" className="px-6 py-3 bg-purple-700 text-white rounded-lg font-semibold shadow hover:bg-purple-800 transition">Learn more</a>

@@ -37,16 +37,29 @@ const Navigation = () => {
     if (sectionId === 'Home') {
       if (location.pathname !== '/') {
         navigate('/');
+        // We can't scroll immediately because the page hasn't loaded. 
+        // In a real app we might use a hash or context to scroll after nav.
+        // For now, just going to home is enough as home starts at top.
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
       return;
     }
 
-    // For other sections, use hash navigation
+    // For other sections
     const targetId = sectionId.toLowerCase();
     if (location.pathname !== '/') {
-      navigate(`/#${targetId}`);
+      navigate('/');
+      // Delay scroll to allow navigation to complete
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          const navHeight = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      }, 100);
     } else {
       const element = document.getElementById(targetId);
       if (element) {
