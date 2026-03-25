@@ -6,7 +6,7 @@ const About = () => {
           <div className="relative">
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img
-                src="https://images.pexels.com/photos/1884584/pexels-photo-1884584.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="https://ajaxexport.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-17-at-3.28.47-PM-2.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="About"
                 className="w-full h-auto"
               />
