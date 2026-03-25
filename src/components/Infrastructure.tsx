@@ -83,7 +83,7 @@ const Infrastructure = () => {
             <div className="relative">
               <div className="aspect-square rounded-lg overflow-hidden">
                 <img
-                  src="https://images.pexels.com/photos/4464482/pexels-photo-4464482.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  src="https://ajaxexport.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-17-at-4.58.40-PM.jpeg?auto=compress&cs=tinysrgb&w=800"
                   alt="Facility"
                   className="w-full h-full object-cover"
                 />
